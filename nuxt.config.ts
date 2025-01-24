@@ -1,8 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: "2024-11-01",
+  compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  css: ["@/assets/scss/global.scss"],
+  css: ['@/assets/scss/global.scss'],
   vite: {
     css: {
       preprocessorOptions: {
@@ -15,13 +15,13 @@ export default defineNuxtConfig({
   },
   modules: [
     [
-      "@nuxtjs/google-fonts",
+      '@nuxtjs/google-fonts',
       {
         families: {
-          "PT Sans": {
+          'PT Sans': {
             wght: [400, 700],
           },
-          "PT Serif": {
+          'PT Serif': {
             wght: [400, 700],
             ital: [400],
           },
@@ -29,4 +29,4 @@ export default defineNuxtConfig({
       },
     ],
   ],
-});
+})
