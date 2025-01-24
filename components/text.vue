@@ -49,6 +49,8 @@
 
 <style lang="scss" scoped>
   .text {
+    transition: $transition-default;
+
     &.-title-h1 {
       font-family: $font-serif;
       font-weight: $weight-bold;
