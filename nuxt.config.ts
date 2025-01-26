@@ -3,6 +3,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   css: ['@/assets/scss/global.scss'],
+  image: {
+    dir: 'assets/images',
+  },
   vite: {
     css: {
       preprocessorOptions: {
@@ -14,6 +17,7 @@ export default defineNuxtConfig({
     },
   },
   modules: [
+    '@nuxt/image',
     [
       '@nuxtjs/google-fonts',
       {

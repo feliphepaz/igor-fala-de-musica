@@ -59,29 +59,7 @@
 
 <script setup lang="ts">
   import { Logo } from '@/assets/logos'
-
-  const MENU_ITEMS = [
-    {
-      path: '/quem-somos',
-      title: 'Quem somos',
-    },
-    {
-      path: '/devaneios',
-      title: 'Devaneios',
-    },
-    {
-      path: '/listas',
-      title: 'Listas',
-    },
-    {
-      path: '/criticas',
-      title: 'Críticas',
-    },
-    {
-      path: '/playlists',
-      title: 'Playlists',
-    },
-  ]
+  import { MENU_ITEMS } from '@/mocks/menu-items'
 
   const showMobileMenu = ref(false)
 </script>

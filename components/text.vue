@@ -56,6 +56,10 @@
       font-weight: $weight-bold;
       font-size: 40px;
       line-height: 120%;
+
+      @include tablet {
+        font-size: 32px;
+      }
     }
 
     &.-title {
