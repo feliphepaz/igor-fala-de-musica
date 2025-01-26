@@ -33,9 +33,9 @@
       padding: 10px 45px 10px 20px;
       font-family: $font-sans;
       font-weight: $weight-regular;
-      color: $color-black;
-      font-size: 18px;
+      font-size: 16px;
       line-height: 120%;
+      color: $color-black;
       border: none;
       outline: none;
       border-radius: $radius-20;
