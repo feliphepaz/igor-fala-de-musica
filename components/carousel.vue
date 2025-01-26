@@ -4,7 +4,7 @@
       class="carousel__swiper"
       :modules="modules"
       :slides-per-view="1"
-      :autoplay="{ delay: 5000 }"
+      :autoplay="{ delay: 6000 }"
       :pagination="{ clickable: true }"
       loop
     >
