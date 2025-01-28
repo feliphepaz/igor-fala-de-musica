@@ -1,6 +1,6 @@
 <template>
   <NuxtLink class="card" :to="card.slug">
-    <NuxtImg :src="card.image" />
+    <NuxtImg :src="card.image" :alt="card.title" />
     <div class="card__content">
       <div class="card__content__legend">
         <Text as="span" type="legend" color="black">{{ card.date }}</Text>
@@ -9,7 +9,7 @@
         </Text>
       </div>
 
-      <Text as="h2" type="title" color="black">
+      <Text as="h3" type="title" color="black">
         {{ card.title }}
       </Text>
     </div>

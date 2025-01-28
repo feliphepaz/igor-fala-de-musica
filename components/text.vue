@@ -1,5 +1,5 @@
 <template>
-  <component :is="as" :class="classList" :style="{ color: textColor }">
+  <component :is="as" :class="classList">
     <slot />
   </component>
 </template>
@@ -21,18 +21,12 @@
     variant?: 'italic' | 'bold' | 'underline'
   }
 
-  const props = withDefaults(defineProps<Props>(), {
-    as: 'p',
-  })
+  const { as = 'p', type, color, variant } = defineProps<Props>()
 
-  const classList = [
-    'text',
-    `-${props.type}`,
-    props.variant && `-${props.variant}`,
-  ]
+  const classList = ['text', `-${type}`, variant && `-${variant}`]
 
   const textColor = computed(() => {
-    switch (props.color) {
+    switch (color) {
       case 'white':
         return '#ffffff'
       case 'black':
@@ -50,12 +44,17 @@
 <style lang="scss" scoped>
   .text {
     transition: $transition-default;
+    color: v-bind(textColor);
 
     &.-title-h1 {
       font-family: $font-serif;
       font-weight: $weight-bold;
       font-size: 40px;
       line-height: 120%;
+
+      :deep(strong) {
+        color: $color-igor;
+      }
 
       @include tablet {
         font-size: 32px;

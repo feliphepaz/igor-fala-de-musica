@@ -10,7 +10,7 @@
     >
       <SwiperSlide v-for="(slide, index) in slides" :key="index">
         <NuxtLink class="carousel__swiper__slide" :to="slide.slug">
-          <NuxtImg :src="slide.image" />
+          <NuxtImg :src="slide.image" :alt="slide.title" />
 
           <div class="carousel__swiper__slide__content">
             <div class="carousel__swiper__slide__content__legend">
