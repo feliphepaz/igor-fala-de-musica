@@ -21,8 +21,8 @@
             :key="index"
           >
             <NuxtLink
-              :to="item.path"
               :class="{ '-is-active': item.path === $route.path }"
+              :to="item.path"
             >
               <Text as="span" type="text-18" variant="bold" color="cherry">
                 {{ item.title }}
