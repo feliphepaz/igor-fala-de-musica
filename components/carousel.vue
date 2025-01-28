@@ -8,8 +8,8 @@
       :pagination="{ clickable: true }"
       loop
     >
-      <SwiperSlide v-for="(slide, index) in SLIDES" :key="index">
-        <NuxtLink class="carousel__swiper__slide" :to="slide.path">
+      <SwiperSlide v-for="(slide, index) in slides" :key="index">
+        <NuxtLink class="carousel__swiper__slide" :to="slide.slug">
           <NuxtImg :src="slide.image" />
 
           <div class="carousel__swiper__slide__content">
@@ -32,13 +32,17 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import { Swiper, SwiperSlide } from 'swiper/vue'
   import { Autoplay, Pagination } from 'swiper/modules'
-  import { SLIDES } from '@/mocks/slides'
-
   import 'swiper/css'
   import 'swiper/css/pagination'
+
+  interface Props {
+    slides: Post[]
+  }
+
+  defineProps<Props>()
 
   const modules = [Autoplay, Pagination]
 </script>
@@ -97,8 +101,8 @@
         width: 10px;
         height: 10px;
         background: $color-white;
+        opacity: $opacity-100;
         margin: 0;
-        opacity: 1;
       }
 
       :deep(.swiper-pagination-bullet-active) {

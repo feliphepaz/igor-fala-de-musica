@@ -9,3 +9,15 @@
     @content;
   }
 }
+
+@mixin before-tablet {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin before-mobile {
+  @media (max-width: 980px) {
+    @content;
+  }
+}
