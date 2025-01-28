@@ -98,6 +98,10 @@
         &:hover:not(:disabled),
         &.-is-active {
           background: $color-igor;
+
+          span {
+            color: $color-white;
+          }
         }
 
         &:last-child svg {
