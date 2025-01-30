@@ -75,6 +75,10 @@
       line-height: 160%;
       letter-spacing: 0.2px;
 
+      @include tablet {
+        font-size: 18px;
+      }
+
       &.-italic {
         font-style: italic;
       }
@@ -127,7 +131,9 @@
       font-size: 14px;
       line-height: 120%;
 
-      &.-underline {
+      &.-underline,
+      :deep(a) {
+        color: inherit;
         text-decoration: underline;
       }
     }
