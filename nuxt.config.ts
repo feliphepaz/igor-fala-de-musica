@@ -9,9 +9,6 @@ export default defineNuxtConfig({
       supabaseKey: process.env.SUPABASE_KEY,
     },
   },
-  image: {
-    dir: 'assets/images',
-  },
   vite: {
     css: {
       preprocessorOptions: {
