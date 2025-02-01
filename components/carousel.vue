@@ -60,7 +60,6 @@
 
         img {
           height: 640px;
-          object-fit: cover;
 
           @include tablet {
             height: 540px;

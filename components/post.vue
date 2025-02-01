@@ -48,7 +48,6 @@
       width: 180px;
       min-width: 180px;
       height: 100px;
-      object-fit: cover;
 
       @include tablet {
         width: 100%;

@@ -8,7 +8,7 @@
 
     <div class="post-photo__legend">
       <Text type="caption" color="black">Foto: David McClister</Text>
-      <Text type="legend" color="black">
+      <Text type="caption" color="black">
         Brittany Howard junto com a sua banda Alabama Shakes
       </Text>
     </div>
@@ -24,7 +24,6 @@
 
     &__image {
       max-height: 460px;
-      object-fit: cover;
     }
 
     &__legend {

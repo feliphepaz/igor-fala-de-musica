@@ -41,7 +41,6 @@
 
     img {
       height: 200px;
-      object-fit: cover;
     }
 
     &__content {
