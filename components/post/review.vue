@@ -5,6 +5,7 @@
         class="post-review__data__cover"
         src="/images/covers/tangk.png"
         alt="Tangk"
+        quality="100"
       />
 
       <div class="post-review__data__info">

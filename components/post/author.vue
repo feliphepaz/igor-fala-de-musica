@@ -38,6 +38,7 @@
     @include mobile {
       flex-direction: column;
       align-items: center;
+      gap: 10px;
     }
 
     img {
