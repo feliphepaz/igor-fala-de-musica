@@ -33,9 +33,6 @@
 </template>
 
 <script setup lang="ts">
-  import 'swiper/css'
-  import 'swiper/css/pagination'
-
   import { Swiper, SwiperSlide } from 'swiper/vue'
   import { Autoplay, Pagination } from 'swiper/modules'
 

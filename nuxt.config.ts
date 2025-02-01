@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  css: ['@/assets/scss/global.scss'],
+  css: ['@/assets/scss/global.scss', 'swiper/css', 'swiper/css/pagination'],
   runtimeConfig: {
     public: {
       supabaseUrl: process.env.SUPABASE_URL,
