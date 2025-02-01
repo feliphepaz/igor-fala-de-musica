@@ -6,6 +6,7 @@
       <PostHeader />
       <PostBody />
       <PostReview />
+      <PostFooter />
     </article>
   </main>
 </template>

@@ -8,18 +8,12 @@
 
         <nav class="footer__content__wrapper__menu">
           <div class="footer__content__wrapper__menu__contact">
-            <a
-              class="footer__content__wrapper__menu__contact__social"
-              href="https://www.instagram.com/"
-              target="blank"
-              rel="noreferrer"
-            >
+            <a href="https://x.com/" target="blank" rel="noreferrer">
               <XIcon />
             </a>
 
             <a
-              class="footer__content__wrapper__menu__contact__social"
-              href="https://x.com/"
+              href="https://www.instagram.com/"
               target="blank"
               rel="noreferrer"
             >
@@ -104,7 +98,7 @@
             display: flex;
             gap: 10px;
 
-            &__social {
+            a {
               display: flex;
               align-items: center;
               justify-content: center;

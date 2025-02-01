@@ -8,7 +8,15 @@
   >
     <path
       d="M15.7511 0.431641H18.8178L12.1179 8.08945L20 18.5097H13.8282L8.99457 12.1897L3.46363 18.5097H0.394883L7.56109 10.319L0 0.431641H6.32809L10.6975 6.2082L15.7511 0.431641ZM14.6747 16.674H16.3741L5.40481 2.17098H3.58137L14.6747 16.674Z"
-      fill="white"
+      :fill="color"
     />
   </svg>
 </template>
+
+<script setup lang="ts">
+  interface Props {
+    color?: string
+  }
+
+  const { color = 'white' } = defineProps<Props>()
+</script>
