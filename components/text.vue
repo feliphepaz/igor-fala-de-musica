@@ -32,7 +32,7 @@
       case 'black':
         return '#000000'
       case 'queen':
-        return '#f2d0d0'
+        return '#fce9e9'
       case 'igor':
         return '#ff91b4'
       case 'cherry':
@@ -53,7 +53,7 @@
       line-height: 120%;
 
       :deep(strong) {
-        color: $color-igor;
+        color: $color-cherry;
       }
 
       @include tablet {

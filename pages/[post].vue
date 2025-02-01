@@ -11,7 +11,7 @@
 
     <section class="post__related-posts">
       <div class="container">
-        <Text as="h2" type="title-h1" color="white">Relacionados</Text>
+        <Text as="h2" type="title-h1" color="igor">Relacionados</Text>
       </div>
 
       <CardsGrid :cards="POSTS.list" />
@@ -49,8 +49,8 @@
           display: block;
           width: 100%;
           height: 1px;
-          opacity: $opacity-40;
-          background: $color-white;
+          opacity: $opacity-20;
+          background: $color-igor;
           margin-top: 10px;
         }
       }

@@ -6,7 +6,7 @@
     <section class="home__rankings">
       <div class="home__rankings__wrapper container">
         <div class="home__rankings__wrapper__ranking">
-          <Text as="h2" type="title-h1" color="white">
+          <Text as="h2" type="title-h1" color="igor">
             As
             <strong>mais lidas</strong>
           </Text>
@@ -15,7 +15,7 @@
         </div>
 
         <div class="home__rankings__wrapper__ranking">
-          <Text as="h2" type="title-h1" color="white">
+          <Text as="h2" type="title-h1" color="igor">
             Últimas
             <strong>críticas</strong>
           </Text>
@@ -64,8 +64,8 @@
             display: block;
             width: 100%;
             height: 1px;
-            opacity: $opacity-40;
-            background: $color-white;
+            opacity: $opacity-20;
+            background: $color-igor;
             margin-top: 10px;
           }
         }
