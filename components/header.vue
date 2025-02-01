@@ -7,6 +7,7 @@
 
       <nav class="header__wrapper__menu">
         <ul
+          ref="menu"
           :class="[
             'header__wrapper__menu__list',
             { '-is-active': showMobileMenu },
@@ -23,6 +24,7 @@
             <NuxtLink
               :class="{ '-is-active': item.path === $route.path }"
               :to="item.path"
+              @click="showMobileMenu = false"
             >
               <Text as="span" type="text-18" variant="bold" color="cherry">
                 {{ item.title }}
@@ -30,7 +32,9 @@
             </NuxtLink>
           </li>
           <li class="header__wrapper__menu__list__contact">
-            <Button as-link to="/contato">Quero escrever também!</Button>
+            <Button as-link to="/contato" @click="showMobileMenu = false">
+              Quero escrever também!
+            </Button>
           </li>
         </ul>
       </nav>
@@ -59,9 +63,14 @@
 
 <script setup lang="ts">
   import { Logo } from '@/assets/logos'
+  import { onClickOutside } from '@vueuse/core'
+
   import { MENU_ITEMS } from '@/mocks/menu-items'
 
   const showMobileMenu = ref(false)
+  const menu = ref(null)
+
+  onClickOutside(menu, () => (showMobileMenu.value = false))
 </script>
 
 <style lang="scss" scoped>
@@ -215,7 +224,6 @@
           }
         }
 
-        &:hover,
         &.-is-active {
           border: 4px solid $color-white;
 
