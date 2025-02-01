@@ -131,10 +131,10 @@ table {
 
 // Base
 :root {
-  --header-height: 85px;
+  --header-height: 81px;
 
   @include tablet {
-    --header-height: 77px;
+    --header-height: 70px;
   }
 }
 

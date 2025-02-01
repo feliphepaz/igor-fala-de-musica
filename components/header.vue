@@ -87,7 +87,7 @@
         display: flex;
 
         @include tablet {
-          width: 140px;
+          width: 120px;
         }
       }
 

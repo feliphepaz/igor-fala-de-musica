@@ -19,6 +19,10 @@
   .breadcrumb {
     padding: 40px 0;
 
+    @include mobile {
+      padding: 20px 0;
+    }
+
     &__link {
       display: flex;
       align-items: center;
