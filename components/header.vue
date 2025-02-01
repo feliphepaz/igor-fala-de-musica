@@ -7,7 +7,7 @@
 
       <nav class="header__wrapper__menu">
         <ul
-          ref="menu"
+          ref="menuRef"
           :class="[
             'header__wrapper__menu__list',
             { '-is-active': showMobileMenu },
@@ -45,6 +45,7 @@
       </div>
 
       <button
+        ref="mobileButtonRef"
         :class="[
           'header__wrapper__mobile-button',
           { '-is-active': showMobileMenu },
@@ -68,9 +69,12 @@
   import { MENU_ITEMS } from '@/mocks/menu-items'
 
   const showMobileMenu = ref(false)
-  const menu = ref(null)
+  const menuRef = ref(null)
+  const mobileButtonRef = ref(null)
 
-  onClickOutside(menu, () => (showMobileMenu.value = false))
+  onClickOutside(menuRef, () => (showMobileMenu.value = false), {
+    ignore: [mobileButtonRef],
+  })
 </script>
 
 <style lang="scss" scoped>
