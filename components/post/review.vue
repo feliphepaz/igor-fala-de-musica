@@ -44,7 +44,7 @@
     @include mobile {
       flex-direction: column;
       align-items: center;
-      gap: 40px;
+      gap: 20px;
       max-width: 100%;
       background: linear-gradient($top-to-bottom, $color-igor, $color-queen);
     }
@@ -55,6 +55,7 @@
 
       @include mobile {
         flex-direction: column;
+        gap: 10px;
       }
 
       &__cover {
