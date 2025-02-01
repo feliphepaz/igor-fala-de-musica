@@ -13,6 +13,7 @@
     "@nuxt/image": "1.9.0",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@supabase/supabase-js": "^2.48.1",
+    "@vueuse/nuxt": "12.5.0",
     "nuxt": "^3.15.2",
     "swiper": "^11.2.1",
     "vue": "latest",
