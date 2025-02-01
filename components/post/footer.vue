@@ -13,8 +13,7 @@
           height="352"
           frameBorder="0"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-        ></iframe>
+        />
       </div>
 
       <div class="post-footer__wrapper__tags">
