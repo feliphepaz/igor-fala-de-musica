@@ -115,7 +115,7 @@
             flex-direction: column;
             align-items: flex-start;
             position: absolute;
-            top: calc(var(--header-height) - 5px);
+            top: calc(var(--header-height) - 2px);
             left: 0;
             gap: 0;
             z-index: 999;
