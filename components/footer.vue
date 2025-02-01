@@ -68,6 +68,10 @@
   .footer {
     margin-top: 100px;
 
+    @include mobile {
+      margin-top: 80px;
+    }
+
     &__content {
       background: $color-igor;
       padding: 30px 0 26px;
@@ -76,7 +80,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 30px;
+        gap: 20px;
 
         &__logo {
           display: flex;
