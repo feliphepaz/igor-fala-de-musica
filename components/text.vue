@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
   interface Props {
-    as?: 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'small'
+    as?: 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'small'
     type:
       | 'title-h1'
       | 'title'

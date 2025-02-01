@@ -5,6 +5,7 @@
     <article class="post__article">
       <PostHeader />
       <PostBody />
+      <PostReview />
     </article>
   </main>
 </template>
