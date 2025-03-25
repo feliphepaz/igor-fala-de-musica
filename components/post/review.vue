@@ -28,7 +28,9 @@
         <Text as="span" type="title-h1" color="cherry">9.6</Text>
       </div>
 
-      <Text type="title" color="cherry">Ótimo!</Text>
+      <Text class="post-review__rating__text" type="title" color="cherry">
+        Ótimo!
+      </Text>
     </div>
   </div>
 </template>
@@ -36,9 +38,10 @@
 <style lang="scss" scoped>
   .post-review {
     display: flex;
+    justify-content: space-between;
     gap: 80px;
     padding: 40px;
-    max-width: 620px;
+    max-width: 700px;
     background: linear-gradient($left-to-right, $color-igor, $color-queen);
 
     @include mobile {
@@ -93,6 +96,10 @@
           width: 100px;
           height: 100px;
         }
+      }
+
+      &__text {
+        text-align: center;
       }
     }
   }
