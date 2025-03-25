@@ -30,6 +30,25 @@
 <script setup lang="ts">
   import { SLIDES } from '@/mocks/home/slides'
   import { POSTS } from '@/mocks/home/posts'
+
+  import useSupabase from '@/composables/supabase'
+
+  const { supabase } = useSupabase()
+
+  async function getPosts() {
+    try {
+      const posts = await supabase.from('posts').select()
+      return posts.data
+    } catch (err) {
+      return new Error()
+    }
+  }
+
+  onMounted(async () => {
+    const posts = await getPosts()
+
+    console.log(posts)
+  })
 </script>
 
 <style lang="scss" scoped>

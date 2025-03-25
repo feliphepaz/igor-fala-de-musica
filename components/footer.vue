@@ -127,7 +127,7 @@
               &:focus,
               &.-is-active {
                 .text {
-                  color: $color-white !important;
+                  color: $color-white;
                 }
               }
             }

@@ -160,7 +160,7 @@
                 }
 
                 .text {
-                  color: $color-white !important;
+                  color: $color-white;
                 }
               }
             }
