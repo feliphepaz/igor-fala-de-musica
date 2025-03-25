@@ -21,6 +21,8 @@
         egestas nisl sit amet aliquam.
       </Text>
 
+      <PostQuote />
+
       <Text type="body" color="black">
         Integer imperdiet, lacus vel mattis finibus, augue eros ultrices nulla,
         a egestas tellus elit non lorem. Fusce bibendum ac sapien at
