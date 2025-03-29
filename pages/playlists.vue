@@ -53,6 +53,13 @@
     await getPlaylistsPagination()
     await getPlaylistsMostRead()
   })
+
+  useHead({
+    title: 'Igor Fala de Música | Playlists',
+    meta: [
+      { property: 'og:title', content: 'Igor Fala de Música | Playlists' },
+    ],
+  })
 </script>
 
 <style lang="scss" scoped>

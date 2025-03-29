@@ -53,6 +53,13 @@
     await getDaydreamsPagination()
     await getDaydreamsMostRead()
   })
+
+  useHead({
+    title: 'Igor Fala de Música | Devaneios',
+    meta: [
+      { property: 'og:title', content: 'Igor Fala de Música | Devaneios' },
+    ],
+  })
 </script>
 
 <style lang="scss" scoped>

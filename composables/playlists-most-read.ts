@@ -13,6 +13,7 @@ export default function usePlaylistsMostRead() {
       .from('posts')
       .select()
       .eq('category', 'playlist')
+      .eq('highlight', true)
       .limit(4)
 
     playlistsMostRead.value = data as Post[]

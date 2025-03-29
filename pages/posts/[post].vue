@@ -79,6 +79,28 @@
 
       await getAuthor(post.value.author)
       await getTags(post.value.tags as string[])
+
+      useHead({
+        title: `Igor Fala de Música | ${post.value.title}`,
+        meta: [
+          {
+            name: 'description',
+            content: post.value.subtitle,
+          },
+          {
+            property: 'og:title',
+            content: `Igor Fala de Música | ${post.value.title}`,
+          },
+          {
+            property: 'og:description',
+            content: post.value.subtitle,
+          },
+          {
+            property: 'og:image',
+            content: post.value.images[1].file,
+          },
+        ],
+      })
     } else {
       await navigateTo('/404')
     }

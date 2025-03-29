@@ -43,6 +43,16 @@
     await getPostsFound(1, route.params.search as string)
     await getPostsFoundPagination()
   })
+
+  useHead({
+    title: `Igor Fala de Música | ${route.params.search}`,
+    meta: [
+      {
+        property: 'og:title',
+        content: `Igor Fala de Música | ${route.params.search}`,
+      },
+    ],
+  })
 </script>
 
 <style lang="scss" scoped>

@@ -13,6 +13,7 @@ export default function useListsMostRead() {
       .from('posts')
       .select()
       .eq('category', 'lista')
+      .eq('highlight', true)
       .limit(4)
 
     listsMostRead.value = data as Post[]

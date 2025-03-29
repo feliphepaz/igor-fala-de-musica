@@ -13,6 +13,7 @@ export default function useDaydreamsMostRead() {
       .from('posts')
       .select()
       .eq('category', 'devaneio')
+      .eq('highlight', true)
       .limit(4)
 
     daydreamsMostRead.value = data as Post[]

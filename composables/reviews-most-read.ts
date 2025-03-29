@@ -13,6 +13,7 @@ export default function useReviewsMostRead() {
       .from('posts')
       .select()
       .eq('category', 'critica')
+      .eq('highlight', true)
       .limit(4)
 
     reviewsMostRead.value = data as Post[]

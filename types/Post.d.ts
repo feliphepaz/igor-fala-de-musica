@@ -40,6 +40,7 @@ type Post = {
   review?: Review
   spotify: Spotify
   author: number
+  highlight: boolean
 }
 
 type Pagination = {

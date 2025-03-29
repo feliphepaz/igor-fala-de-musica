@@ -50,6 +50,11 @@
     await getReviewsPagination()
     await getReviewsMostRead()
   })
+
+  useHead({
+    title: 'Igor Fala de Música | Críticas',
+    meta: [{ property: 'og:title', content: 'Igor Fala de Música | Críticas' }],
+  })
 </script>
 
 <style lang="scss" scoped>

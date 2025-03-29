@@ -20,9 +20,9 @@
           </Text>
 
           <PostsGrid
-            :loading="isLastReviewsLoading"
+            :loading="isPostsMostReadLoading"
             :number-of-cards="4"
-            :posts="lastReviews"
+            :posts="postsMostRead"
             :columns="1"
           />
         </div>
@@ -48,6 +48,7 @@
 <script setup lang="ts">
   import useSlides from '@/composables/slides'
   import useLastPosts from '@/composables/last-posts'
+  import usePostsMostRead from '@/composables/posts-most-read'
   import useLastReviews from '@/composables/last-reviews'
 
   const { slides, isSlidesLoading, getSlides } = useSlides()
@@ -60,12 +61,16 @@
     getLastPostsPagination,
   } = useLastPosts()
 
+  const { postsMostRead, isPostsMostReadLoading, getPostsMostRead } =
+    usePostsMostRead()
+
   const { lastReviews, isLastReviewsLoading, getLastReviews } = useLastReviews()
 
   onMounted(async () => {
     await getSlides()
     await getLastPosts(1)
     await getLastPostsPagination()
+    await getPostsMostRead()
     await getLastReviews()
   })
 </script>
