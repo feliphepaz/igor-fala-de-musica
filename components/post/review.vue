@@ -3,34 +3,40 @@
     <div class="post-review__data">
       <NuxtImg
         class="post-review__data__cover"
-        src="/images/covers/tangk.png"
-        alt="Tangk"
+        :src="review.album.cover"
+        :alt="review.album.name"
         quality="100"
       />
 
       <div class="post-review__data__info">
         <Text
-          v-if="year"
+          v-if="review.album.year"
           class="post-review__data__info__year"
           as="span"
           type="caption"
           variant="bold"
           color="black"
         >
-          2024
+          {{ review.album.year }}
         </Text>
-        <Text as="h4" type="title-h1" color="black">Tangk</Text>
-        <Text as="h5" type="title" color="black">IDLES</Text>
+        <Text as="h4" type="title-h1" color="black">
+          {{ review.album.name }}
+        </Text>
+        <Text as="h5" type="title" color="black">
+          {{ review.album.artist }}
+        </Text>
       </div>
     </div>
 
     <div class="post-review__rating">
       <div class="post-review__rating__score">
-        <Text as="span" type="title-h1" color="cherry">9.6</Text>
+        <Text as="span" type="title-h1" color="cherry">
+          {{ review.review.score }}
+        </Text>
       </div>
 
       <Text class="post-review__rating__text" type="title" color="cherry">
-        Ótimo!
+        {{ review.review.ratingText }}
       </Text>
     </div>
   </div>
@@ -38,10 +44,7 @@
 
 <script setup lang="ts">
   interface Props {
-    album: string
-    band: string
-    year?: string
-    cover?: string
+    review: Review
   }
 
   defineProps<Props>()

@@ -11,7 +11,7 @@
       loop
     >
       <SwiperSlide v-for="(slide, index) in slides" :key="index">
-        <NuxtLink class="carousel__swiper__slide" :to="slide.slug">
+        <NuxtLink class="carousel__swiper__slide" :to="`/posts/${slide.slug}`">
           <NuxtImg :src="slide.images[0].file" :alt="slide.title" />
 
           <div class="carousel__swiper__slide__content">

@@ -3,7 +3,7 @@
     <div class="search__wrapper container">
       <section class="search__wrapper__section">
         <Text as="h2" type="title-h1" color="igor">
-          Resultados da pesquisa para
+          Resultado da pesquisa para
           <strong>“{{ route.params.search }}”</strong>
         </Text>
 

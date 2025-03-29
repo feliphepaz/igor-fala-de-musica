@@ -1,14 +1,17 @@
 <template>
   <section class="post-footer">
     <div class="post-footer__wrapper">
-      <div class="post-footer__wrapper__spotify">
+      <div
+        v-if="spotify.embed && spotify.id"
+        class="post-footer__wrapper__spotify"
+      >
         <Text as="h3" type="text-18" variant="bold" color="cherry">
           Escuta aí po!
         </Text>
 
         <iframe
           style="border-radius: 12px"
-          src="https://open.spotify.com/embed/album/13fXtIpIyvz4D5Ny3TSHym?utm_source=generator"
+          :src="`https://open.spotify.com/embed/album/${spotify.id}?utm_source=generator`"
           width="100%"
           height="352"
           frameBorder="0"
@@ -17,10 +20,9 @@
       </div>
 
       <div class="post-footer__wrapper__tags">
-        <Tag />
-        <Tag />
-        <Tag />
-        <Tag />
+        <Tag v-for="tag in tags" :key="tag.id" :path="tag.title">
+          {{ tag.title }}
+        </Tag>
       </div>
 
       <div class="post-footer__wrapper__author">
@@ -29,12 +31,25 @@
         </Text>
 
         <div class="post-footer__wrapper__author__content">
-          <PostAuthor />
+          <Skeleton v-if="authorLoading" height="136px" />
+
+          <PostAuthor v-else :author="author" />
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+  interface Props {
+    spotify: Spotify
+    tags: Tag[]
+    authorLoading: boolean
+    author: Author
+  }
+
+  defineProps<Props>()
+</script>
 
 <style lang="scss" scoped>
   .post-footer {
@@ -78,6 +93,16 @@
           opacity: $opacity-10;
           background: $color-cherry;
           margin-top: 10px;
+        }
+
+        &__content {
+          &:deep(.skeleton) {
+            height: 136px;
+
+            @include mobile {
+              height: 266px;
+            }
+          }
         }
       }
     }

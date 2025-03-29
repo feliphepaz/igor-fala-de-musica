@@ -1,24 +1,29 @@
 <template>
   <div class="post-author">
-    <NuxtImg src="/images/avatar.jpg" alt="Feliphe Paz" />
+    <NuxtImg :src="author.avatar" :alt="author.name" />
 
     <div class="post-author__content">
       <Text as="h4" type="text-18" variant="bold" color="black">
-        Feliphe Paz
+        {{ author.name }}
       </Text>
 
       <Text type="text-14" color="black">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lacinia
-        tincidunt lorem at lacinia. Vivamus sagittis dictum vulputate. Aliquam
-        eget elit sit amet orci aliquam interdum pulvinar et quam.
+        {{ author.biography }}
       </Text>
 
-      <div class="post-author__content__contact">
-        <a href="https://x.com/" target="blank" rel="noreferrer">
+      <div
+        v-if="author.social.x || author.social.instagram"
+        class="post-author__content__contact"
+      >
+        <a v-if="author.social.x" :href="author.social.x" target="_blank">
           <XIcon color="black" />
         </a>
 
-        <a href="https://www.instagram.com/" target="blank" rel="noreferrer">
+        <a
+          v-if="author.social.instagram"
+          :href="author.social.instagram"
+          target="_blank"
+        >
           <InstagramIcon color="black" />
         </a>
       </div>
@@ -28,6 +33,12 @@
 
 <script setup lang="ts">
   import { XIcon, InstagramIcon } from '@/assets/icons'
+
+  interface Props {
+    author: Author
+  }
+
+  defineProps<Props>()
 </script>
 
 <style lang="scss" scoped>

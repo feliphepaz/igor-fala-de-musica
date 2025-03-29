@@ -1,10 +1,18 @@
 <template>
-  <NuxtLink class="tag" to="/">
+  <NuxtLink class="tag" :to="`/busca/${path}`">
     <Text as="span" type="text-14" variant="bold" color="cherry">
-      Punk Rock
+      <slot />
     </Text>
   </NuxtLink>
 </template>
+
+<script setup lang="ts">
+  interface Props {
+    path: string
+  }
+
+  defineProps<Props>()
+</script>
 
 <style lang="scss" scoped>
   .tag {

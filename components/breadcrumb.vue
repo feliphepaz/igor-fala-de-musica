@@ -1,9 +1,9 @@
 <template>
   <div class="breadcrumb">
     <div class="container">
-      <NuxtLink class="breadcrumb__link" to="/devaneios">
+      <NuxtLink class="breadcrumb__link">
         <ArrowIcon />
-        <Text as="span" type="text-16" color="black">Devaneio</Text>
+        <Text as="span" type="text-16" color="black">{{ category }}</Text>
       </NuxtLink>
 
       <hr class="breadcrumb__line" />
@@ -11,8 +11,19 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import { ArrowIcon } from '@/assets/icons'
+
+  interface Props {
+    type: Category
+  }
+
+  const { type } = defineProps<Props>()
+
+  const category = computed(() => {
+    if (type === 'critica') return 'Crítica'
+    else return type.charAt(0).toUpperCase() + type.slice(1)
+  })
 </script>
 
 <style lang="scss" scoped>

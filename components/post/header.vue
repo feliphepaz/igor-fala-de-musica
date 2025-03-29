@@ -2,26 +2,58 @@
   <section class="post-header">
     <div class="post-header__wrapper">
       <Text as="h1" type="title-h1" color="black">
-        What Now e os 10 anos de Sound & Color
+        {{ title }}
       </Text>
 
       <Text type="subtitle" color="black">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus
-        sed metus ac placerat. Vivamus erat ligula, laoreet sit amet metus at,
-        maximus sagittis tellus. Mauris vel sodales nunc.
+        {{ subtitle }}
       </Text>
 
       <div class="post-header__info">
-        <Text type="legend" color="black">
-          22/01/2025 | Por
-          <NuxtLink to="/autores/feliphe-paz">Feliphe Paz</NuxtLink>
+        <Skeleton v-if="authorLoading" height="17px" />
+
+        <Text v-else type="legend" color="black">
+          {{ date }} | Por
+          <a
+            :href="author.social.x || author.social.instagram || ''"
+            target="_blank"
+          >
+            {{ author.name }}
+          </a>
         </Text>
       </div>
 
-      <PostPhoto />
+      <PostPhoto
+        :file="hero.file"
+        :copyright="hero.copyright"
+        :description="hero.description"
+      />
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+  interface Props {
+    title: string
+    subtitle: string
+    createdAt: string
+    hero: {
+      file: string
+      copyright?: string
+      description?: string
+    }
+    authorLoading: boolean
+    author: Author
+  }
+
+  const { createdAt } = defineProps<Props>()
+
+  const date = computed(() => {
+    const date = new Date(createdAt)
+    const month = (date.getMonth() + 1).toString().padStart(2, '0')
+    return `${date.getDate()}/${month}/${date.getFullYear()}`
+  })
+</script>
 
 <style lang="scss" scoped>
   .post-header {

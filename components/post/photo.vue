@@ -1,19 +1,27 @@
 <template>
   <div class="post-photo">
-    <NuxtImg
-      class="post-photo__image"
-      src="/images/slides/deftones.jpg"
-      alt="Deftones"
-    />
+    <NuxtImg class="post-photo__image" :src="file" :alt="description" />
 
-    <div class="post-photo__legend">
-      <Text type="caption" color="black">Foto: David McClister</Text>
-      <Text type="caption" color="black">
-        Brittany Howard junto com a sua banda Alabama Shakes
+    <div v-if="copyright || description" class="post-photo__legend">
+      <Text v-if="copyright" type="caption" color="black">
+        {{ copyright }}
+      </Text>
+      <Text v-if="description" type="caption" color="black">
+        {{ description }}
       </Text>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+  interface Props {
+    file: string
+    copyright?: string
+    description?: string
+  }
+
+  defineProps<Props>()
+</script>
 
 <style lang="scss" scoped>
   .post-photo {

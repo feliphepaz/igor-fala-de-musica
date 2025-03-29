@@ -2,24 +2,33 @@
   <div class="post-quote">
     <div class="post-quote__content">
       <div class="post-quote__content__verses">
-        <Text type="body" color="black">
-          Boa sorte aos meus inimigos que tanto pediram esse sinal
-        </Text>
-        <Text type="body" color="black">
-          Você conhece o jogo, cães do salvador
-        </Text>
-        <Text type="body" color="black">
-          Glória à legião, trauma pros vizinhos
+        <Text
+          v-for="(verse, index) in verses"
+          :key="index"
+          type="body"
+          color="black"
+        >
+          {{ verse }}
         </Text>
       </div>
     </div>
 
     <div class="post-quote__author">
-      <Text type="text-14" color="black" variant="bold">Emergence</Text>
-      <Text type="text-14" color="black">| Sleep Token</Text>
+      <Text type="text-14" color="black" variant="bold">{{ music }}</Text>
+      <Text type="text-14" color="black">| {{ band }}</Text>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+  interface Props {
+    verses: string[]
+    music: string
+    band: string
+  }
+
+  defineProps<Props>()
+</script>
 
 <style lang="scss" scoped>
   .post-quote {

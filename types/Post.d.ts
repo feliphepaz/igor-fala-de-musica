@@ -1,10 +1,30 @@
+type Category = 'devaneio' | 'lista' | 'critica' | 'playlist'
+
+type Spotify = {
+  embed: boolean
+  id: string | null
+}
+
+type Review = {
+  album: {
+    cover: string
+    year?: string
+    name: string
+    artist: string
+  }
+  review: {
+    score: string
+    ratingText: string
+  }
+}
+
 type Post = {
   id: number
   created_at: string
   title: string
   slug: string
   subtitle: string
-  category: string
+  category: Category
   tags: string[] | null
   images: [
     {
@@ -18,10 +38,8 @@ type Post = {
   ]
   body: Block[]
   review?: Review
-  spotify: {
-    embed: boolean
-    id: string | null
-  }
+  spotify: Spotify
+  author: number
 }
 
 type Pagination = {

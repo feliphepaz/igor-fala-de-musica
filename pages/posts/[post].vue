@@ -1,12 +1,36 @@
 <template>
   <main class="post">
-    <Breadcrumb />
+    <Skeleton class="breadcrumb-loading" v-if="isPostLoading" height="90px" />
+    <Breadcrumb v-else :type="post.category" />
 
     <article class="post__article">
-      <PostHeader />
-      <PostBody />
-      <PostReview />
-      <PostFooter />
+      <Skeleton v-if="isPostLoading" height="400px" />
+      <PostHeader
+        v-else
+        :title="post.title"
+        :subtitle="post.subtitle"
+        :created-at="post.created_at"
+        :hero="post.images[0]"
+        :author-loading="isAuthorLoading"
+        :author="author"
+      />
+
+      <Skeleton v-if="isPostLoading" height="800px" />
+      <PostBody v-else :blocks="post.body" />
+
+      <PostReview
+        v-if="post && post.category === 'critica' && post.review"
+        v-model:review="post.review"
+      />
+
+      <Skeleton v-if="isPostLoading" height="500px" />
+      <PostFooter
+        v-else
+        :spotify="post.spotify"
+        :tags="tags"
+        :author-loading="isAuthorLoading"
+        :author="author"
+      />
     </article>
 
     <section class="post__related-posts">
@@ -14,17 +38,63 @@
         <Text as="h2" type="title-h1" color="igor">Relacionados</Text>
       </div>
 
-      <CardsGrid :cards="POSTS.list" />
+      <CardsGrid
+        :cards="relatedPosts"
+        :loading="isRelatedPostsLoading"
+        :number-of-cards="6"
+      />
     </section>
   </main>
 </template>
 
 <script setup lang="ts">
-  import { POSTS } from '@/mocks/home/posts'
+  import usePost from '@/composables/post'
+  import useAuthor from '@/composables/author'
+  import useTags from '@/composables/tags'
+
+  const route = useRoute()
+
+  const {
+    post,
+    isPostLoading,
+    isRelatedPostsLoading,
+    relatedPosts,
+    getPost,
+    getRelatedPosts,
+  } = usePost()
+
+  const { author, isAuthorLoading, getAuthor } = useAuthor()
+
+  const { tags, getTags } = useTags()
+
+  onMounted(async () => {
+    await getPost(route.params.post as string)
+
+    if (post.value) {
+      await getRelatedPosts(
+        post.value.id,
+        post.value.tags as string[],
+        post.value.category,
+      )
+
+      await getAuthor(post.value.author)
+      await getTags(post.value.tags as string[])
+    } else {
+      await navigateTo('/404')
+    }
+  })
 </script>
 
 <style lang="scss" scoped>
   .post {
+    .breadcrumb-loading {
+      height: 90px;
+
+      @include mobile {
+        height: 80px;
+      }
+    }
+
     &__article {
       display: flex;
       flex-direction: column;
