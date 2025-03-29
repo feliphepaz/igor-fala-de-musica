@@ -1,7 +1,7 @@
 <template>
   <div class="breadcrumb">
     <div class="container">
-      <NuxtLink class="breadcrumb__link">
+      <NuxtLink class="breadcrumb__link" :to="`/${category}s`">
         <ArrowIcon />
         <Text as="span" type="text-16" color="black">{{ category }}</Text>
       </NuxtLink>
