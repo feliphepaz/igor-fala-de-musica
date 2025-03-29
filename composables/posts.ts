@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import useSupabase from '@/composables/supabase'
 
-export default function useLastPosts() {
+export default function usePosts() {
   const { supabase } = useSupabase()
 
   const posts = ref<Post[]>([])

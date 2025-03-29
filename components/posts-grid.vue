@@ -10,7 +10,10 @@
       </li>
     </ul>
 
-    <nav v-if="pagination" class="posts-grid__pagination">
+    <nav
+      v-if="pagination && posts.length > numberOfCards"
+      class="posts-grid__pagination"
+    >
       <button :disabled="actualPage <= 1" @click="prevPage">
         <ArrowIcon />
       </button>
