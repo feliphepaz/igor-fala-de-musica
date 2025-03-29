@@ -1,6 +1,8 @@
 <template>
   <div class="carousel">
+    <Skeleton v-if="loading" height="640px" />
     <Swiper
+      v-else
       class="carousel__swiper"
       :modules="modules"
       :slides-per-view="1"
@@ -10,15 +12,15 @@
     >
       <SwiperSlide v-for="(slide, index) in slides" :key="index">
         <NuxtLink class="carousel__swiper__slide" :to="slide.slug">
-          <NuxtImg :src="slide.image" :alt="slide.title" />
+          <NuxtImg :src="slide.images[0].file" :alt="slide.title" />
 
           <div class="carousel__swiper__slide__content">
             <div class="carousel__swiper__slide__content__legend">
               <Text as="span" type="legend" color="black">
-                {{ slide.date }}
+                {{ convertDate(slide.created_at) }}
               </Text>
               <Text as="span" type="text-14" variant="bold" color="black">
-                {{ slide.category }}
+                {{ convertCategory(slide.category) }}
               </Text>
             </div>
 
@@ -37,16 +39,36 @@
   import { Autoplay, Pagination } from 'swiper/modules'
 
   interface Props {
+    loading: boolean
     slides: Post[]
   }
 
   defineProps<Props>()
 
   const modules = [Autoplay, Pagination]
+
+  function convertDate(timestamp: string) {
+    const date = new Date(timestamp)
+    const month = (date.getMonth() + 1).toString().padStart(2, '0')
+    return `${date.getDate()}/${month}/${date.getFullYear()}`
+  }
+
+  function convertCategory(slug: string) {
+    if (slug === 'critica') return 'Crítica'
+    else return slug.charAt(0).toUpperCase() + slug.slice(1)
+  }
 </script>
 
 <style lang="scss" scoped>
   .carousel {
+    &:deep(.skeleton) {
+      height: 640px;
+
+      @include tablet {
+        height: 540px;
+      }
+    }
+
     &__swiper {
       height: 640px;
 

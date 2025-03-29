@@ -2,7 +2,11 @@
   <div class="cards-grid">
     <div class="container">
       <ul class="cards-grid__cards">
-        <li v-for="(card, index) in cards" :key="index">
+        <li v-if="loading" v-for="n in numberOfCards" :key="n">
+          <Skeleton height="300px" />
+        </li>
+
+        <li v-else v-for="(card, index) in cards" :key="index">
           <Card :card="card" />
         </li>
       </ul>
@@ -37,11 +41,13 @@
   import { ArrowIcon } from '@/assets/icons'
 
   interface Props {
+    numberOfCards?: 6 | 9
+    loading: boolean
     cards: Post[]
     pagination?: Pagination
   }
 
-  const { cards, pagination } = defineProps<Props>()
+  const { numberOfCards = 9, cards, pagination } = defineProps<Props>()
 
   const actualPage = ref(pagination ? pagination.currentPage : 1)
 

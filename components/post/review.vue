@@ -10,6 +10,7 @@
 
       <div class="post-review__data__info">
         <Text
+          v-if="year"
           class="post-review__data__info__year"
           as="span"
           type="caption"
@@ -34,6 +35,17 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+  interface Props {
+    album: string
+    band: string
+    year?: string
+    cover?: string
+  }
+
+  defineProps<Props>()
+</script>
 
 <style lang="scss" scoped>
   .post-review {

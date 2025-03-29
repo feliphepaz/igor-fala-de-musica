@@ -1,29 +1,31 @@
 <template>
   <div class="posts-grid">
     <ul class="posts-grid__posts">
+      <li v-if="loading" v-for="n in numberOfCards" :key="n">
+        <Skeleton height="140px" />
+      </li>
+
       <li v-for="(post, index) in posts" :key="index">
         <Post :post="post" />
       </li>
     </ul>
 
     <nav v-if="pagination" class="posts-grid__pagination">
-      <button :disabled="actualPage <= 1" @click="actualPage -= 1">
+      <button :disabled="actualPage <= 1" @click="prevPage">
         <ArrowIcon />
       </button>
 
       <button
         v-for="(page, index) in pages"
+        v-show="page <= pagination.totalPages && page > 0"
         :key="index"
         :class="{ '-is-active': actualPage === page }"
-        @click="actualPage = page"
+        @click="setPage(page)"
       >
         <Text as="span" type="text-16" color="black">{{ page }}</Text>
       </button>
 
-      <button
-        :disabled="actualPage >= pagination.totalPages"
-        @click="actualPage += 1"
-      >
+      <button :disabled="actualPage >= pagination.totalPages" @click="nextPage">
         <ArrowIcon />
       </button>
     </nav>
@@ -34,14 +36,23 @@
   import { ArrowIcon } from '@/assets/icons'
 
   interface Props {
+    numberOfCards?: 4 | 12
+    loading: boolean
     posts: Post[]
     pagination?: Pagination
     columns?: number
   }
 
-  const { posts, pagination, columns = 2 } = defineProps<Props>()
+  const {
+    numberOfCards = 12,
+    posts,
+    pagination,
+    columns = 2,
+  } = defineProps<Props>()
 
   const actualPage = ref(pagination ? pagination.currentPage : 0)
+
+  const emit = defineEmits(['nextPage', 'setPage', 'prevPage'])
 
   const pages = computed(() => {
     if (!pagination) return
@@ -52,6 +63,21 @@
       return [actualPage.value - 2, actualPage.value - 1, actualPage.value]
     else return [actualPage.value, actualPage.value + 1, actualPage.value + 2]
   })
+
+  function prevPage() {
+    actualPage.value--
+    emit('prevPage', actualPage.value)
+  }
+
+  function nextPage() {
+    actualPage.value++
+    emit('nextPage', actualPage.value)
+  }
+
+  function setPage(page: number) {
+    actualPage.value = page
+    emit('setPage', page)
+  }
 </script>
 
 <style lang="scss" scoped>

@@ -45,6 +45,7 @@
       width: 120px;
       height: 120px;
       border-radius: $radius-rounded;
+      background: $color-white;
     }
 
     &__content {

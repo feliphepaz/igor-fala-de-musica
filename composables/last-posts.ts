@@ -8,6 +8,7 @@ export default function useLastPosts() {
 
   const postsPerPage = 9
 
+  const isLastPostsLoading = ref(true)
   const lastPosts = ref<Post[]>([])
   const lastPostsPagination = reactive<Pagination>({
     currentPage: 1,
@@ -15,6 +16,8 @@ export default function useLastPosts() {
   })
 
   async function getLastPosts(page: number) {
+    isLastPostsLoading.value = true
+
     const start = (page - 1) * postsPerPage
     const end = start + postsPerPage - 1
 
@@ -25,6 +28,7 @@ export default function useLastPosts() {
       .range(start, end)
 
     lastPosts.value = data as Post[]
+    isLastPostsLoading.value = false
   }
 
   async function getLastPostsPagination() {
@@ -41,6 +45,7 @@ export default function useLastPosts() {
   return {
     lastPosts,
     lastPostsPagination,
+    isLastPostsLoading,
     getLastPosts,
     getLastPostsPagination,
   }

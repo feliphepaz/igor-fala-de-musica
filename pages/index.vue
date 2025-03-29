@@ -1,10 +1,11 @@
 <template>
   <main class="home">
-    <Carousel :slides="SLIDES" />
+    <Carousel :loading="isSlidesLoading" :slides="slides" />
 
     <CardsGrid
       :cards="lastPosts"
       :pagination="lastPostsPagination"
+      :loading="isLastPostsLoading"
       @set-page="(page) => getLastPosts(page)"
       @next-page="(page) => getLastPosts(page)"
       @prev-page="(page) => getLastPosts(page)"
@@ -18,7 +19,12 @@
             <strong>mais lidas</strong>
           </Text>
 
-          <PostsGrid :posts="posts" :columns="1" />
+          <PostsGrid
+            :loading="isLastReviewsLoading"
+            :number-of-cards="4"
+            :posts="lastReviews"
+            :columns="1"
+          />
         </div>
 
         <div class="home__rankings__wrapper__ranking">
@@ -27,7 +33,12 @@
             <strong>críticas</strong>
           </Text>
 
-          <PostsGrid :posts="posts" :columns="1" />
+          <PostsGrid
+            :loading="isLastReviewsLoading"
+            :number-of-cards="4"
+            :posts="lastReviews"
+            :columns="1"
+          />
         </div>
       </div>
     </section>
@@ -35,22 +46,27 @@
 </template>
 
 <script setup lang="ts">
-  import { SLIDES } from '@/mocks/home/slides'
-
+  import useSlides from '@/composables/slides'
   import useLastPosts from '@/composables/last-posts'
+  import useLastReviews from '@/composables/last-reviews'
+
+  const { slides, isSlidesLoading, getSlides } = useSlides()
 
   const {
     lastPosts,
     lastPostsPagination,
+    isLastPostsLoading,
     getLastPosts,
     getLastPostsPagination,
   } = useLastPosts()
 
-  const posts = ref<Post[]>([])
+  const { lastReviews, isLastReviewsLoading, getLastReviews } = useLastReviews()
 
   onMounted(async () => {
+    await getSlides()
     await getLastPosts(1)
     await getLastPostsPagination()
+    await getLastReviews()
   })
 </script>
 
