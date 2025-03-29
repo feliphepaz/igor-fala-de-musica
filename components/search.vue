@@ -1,7 +1,13 @@
 <template>
   <div class="search">
-    <input type="text" :placeholder="placeholder" />
-    <button>
+    <input
+      type="text"
+      :placeholder="placeholder"
+      v-model="search"
+      @keyup.enter="searchPost"
+    />
+
+    <button type="button" @click="searchPost">
       <SearchIcon />
     </button>
   </div>
@@ -17,7 +23,16 @@
 
   const { expand } = defineProps<Props>()
 
+  const search = ref('')
+
   const maxWidth = computed(() => (expand ? '100%' : '280px'))
+
+  async function searchPost() {
+    if (search.value) {
+      await navigateTo(`/busca/${search.value}`)
+      search.value = ''
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
