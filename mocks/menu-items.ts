@@ -1,7 +1,7 @@
 export const MENU_ITEMS = [
   {
-    path: '/quem-somos',
-    title: 'Quem somos',
+    path: '/',
+    title: 'Início',
   },
   {
     path: '/devaneios',
