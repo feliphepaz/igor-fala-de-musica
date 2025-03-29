@@ -8,22 +8,23 @@
       </ul>
 
       <nav v-if="pagination" class="cards-grid__pagination">
-        <button :disabled="actualPage <= 1" @click="actualPage -= 1">
+        <button :disabled="actualPage <= 1" @click="prevPage">
           <ArrowIcon />
         </button>
 
         <button
           v-for="(page, index) in pages"
+          v-show="page <= pagination.totalPages && page > 0"
           :key="index"
           :class="{ '-is-active': actualPage === page }"
-          @click="actualPage = page"
+          @click="setPage(page)"
         >
           <Text as="span" type="text-16" color="black">{{ page }}</Text>
         </button>
 
         <button
           :disabled="actualPage >= pagination.totalPages"
-          @click="actualPage += 1"
+          @click="nextPage"
         >
           <ArrowIcon />
         </button>
@@ -42,7 +43,9 @@
 
   const { cards, pagination } = defineProps<Props>()
 
-  const actualPage = ref(pagination ? pagination.currentPage : 0)
+  const actualPage = ref(pagination ? pagination.currentPage : 1)
+
+  const emit = defineEmits(['nextPage', 'setPage', 'prevPage'])
 
   const pages = computed(() => {
     if (!pagination) return
@@ -53,6 +56,21 @@
       return [actualPage.value - 2, actualPage.value - 1, actualPage.value]
     else return [actualPage.value, actualPage.value + 1, actualPage.value + 2]
   })
+
+  function prevPage() {
+    actualPage.value--
+    emit('prevPage', actualPage.value)
+  }
+
+  function nextPage() {
+    actualPage.value++
+    emit('nextPage', actualPage.value)
+  }
+
+  function setPage(page: number) {
+    actualPage.value = page
+    emit('setPage', page)
+  }
 </script>
 
 <style lang="scss" scoped>

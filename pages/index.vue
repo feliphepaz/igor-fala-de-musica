@@ -1,7 +1,14 @@
 <template>
   <main class="home">
     <Carousel :slides="SLIDES" />
-    <CardsGrid :cards="POSTS.list" :pagination="POSTS.pagination" />
+
+    <CardsGrid
+      :cards="lastPosts"
+      :pagination="lastPostsPagination"
+      @set-page="(page) => getLastPosts(page)"
+      @next-page="(page) => getLastPosts(page)"
+      @prev-page="(page) => getLastPosts(page)"
+    />
 
     <section class="home__rankings">
       <div class="home__rankings__wrapper container">
@@ -11,7 +18,7 @@
             <strong>mais lidas</strong>
           </Text>
 
-          <PostsGrid :posts="POSTS.list" :columns="1" />
+          <PostsGrid :posts="posts" :columns="1" />
         </div>
 
         <div class="home__rankings__wrapper__ranking">
@@ -20,7 +27,7 @@
             <strong>críticas</strong>
           </Text>
 
-          <PostsGrid :posts="POSTS.list" :columns="1" />
+          <PostsGrid :posts="posts" :columns="1" />
         </div>
       </div>
     </section>
@@ -29,25 +36,21 @@
 
 <script setup lang="ts">
   import { SLIDES } from '@/mocks/home/slides'
-  import { POSTS } from '@/mocks/home/posts'
 
-  import useSupabase from '@/composables/supabase'
+  import useLastPosts from '@/composables/last-posts'
 
-  const { supabase } = useSupabase()
+  const {
+    lastPosts,
+    lastPostsPagination,
+    getLastPosts,
+    getLastPostsPagination,
+  } = useLastPosts()
 
-  async function getPosts() {
-    try {
-      const posts = await supabase.from('posts').select()
-      return posts.data
-    } catch (err) {
-      return new Error()
-    }
-  }
+  const posts = ref<Post[]>([])
 
   onMounted(async () => {
-    const posts = await getPosts()
-
-    console.log(posts)
+    await getLastPosts(1)
+    await getLastPostsPagination()
   })
 </script>
 

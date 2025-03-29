@@ -1,12 +1,12 @@
 <template>
   <NuxtLink class="post" :to="post.slug">
-    <NuxtImg :src="post.image" :alt="post.title" />
+    <NuxtImg :src="post.images[1].file" :alt="post.title" />
 
     <div class="post__content">
       <div class="post__content__legend">
-        <Text as="span" type="legend" color="black">{{ post.date }}</Text>
+        <Text as="span" type="legend" color="black">{{ date }}</Text>
         <Text as="span" type="text-14" variant="bold" color="black">
-          {{ post.category }}
+          {{ category }}
         </Text>
       </div>
 
@@ -22,7 +22,17 @@
     post: Post
   }
 
-  defineProps<Props>()
+  const { post } = defineProps<Props>()
+
+  const date = computed(() => {
+    const date = new Date(post.created_at)
+    const month = (date.getMonth() + 1).toString().padStart(2, '0')
+    return `${date.getDate()}/${month}/${date.getFullYear()}`
+  })
+  const category = computed(() => {
+    if (post.category === 'critica') return 'Crítica'
+    else return post.category.charAt(0).toUpperCase() + post.category.slice(1)
+  })
 </script>
 
 <style lang="scss" scoped>

@@ -1,11 +1,12 @@
 <template>
   <NuxtLink class="card" :to="card.slug">
-    <NuxtImg :src="card.image" :alt="card.title" />
+    <NuxtImg :src="card.images[1].file" :alt="card.title" />
+
     <div class="card__content">
       <div class="card__content__legend">
-        <Text as="span" type="legend" color="black">{{ card.date }}</Text>
+        <Text as="span" type="legend" color="black">{{ date }}</Text>
         <Text as="span" type="text-14" variant="bold" color="black">
-          {{ card.category }}
+          {{ category }}
         </Text>
       </div>
 
@@ -21,7 +22,17 @@
     card: Post
   }
 
-  defineProps<Props>()
+  const { card } = defineProps<Props>()
+
+  const date = computed(() => {
+    const date = new Date(card.created_at)
+    const month = (date.getMonth() + 1).toString().padStart(2, '0')
+    return `${date.getDate()}/${month}/${date.getFullYear()}`
+  })
+  const category = computed(() => {
+    if (card.category === 'critica') return 'Crítica'
+    else return card.category.charAt(0).toUpperCase() + card.category.slice(1)
+  })
 </script>
 
 <style lang="scss" scoped>
