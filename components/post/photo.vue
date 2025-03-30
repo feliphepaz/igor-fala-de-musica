@@ -28,7 +28,6 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
-    padding-top: 10px;
 
     &__image {
       max-height: 460px;
