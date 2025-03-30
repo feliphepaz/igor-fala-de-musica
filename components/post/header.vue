@@ -39,8 +39,8 @@
     createdAt: string
     hero: {
       file: string
-      copyright?: string
-      description?: string
+      copyright?: string | null
+      description?: string | null
     }
     authorLoading: boolean
     author: Author

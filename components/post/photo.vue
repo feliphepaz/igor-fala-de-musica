@@ -1,6 +1,6 @@
 <template>
   <div class="post-photo">
-    <NuxtImg class="post-photo__image" :src="file" :alt="description" />
+    <NuxtImg class="post-photo__image" :src="file" :alt="description ?? ''" />
 
     <div v-if="copyright || description" class="post-photo__legend">
       <Text v-if="copyright" type="caption" color="black">
@@ -16,8 +16,8 @@
 <script setup lang="ts">
   interface Props {
     file: string
-    copyright?: string
-    description?: string
+    copyright?: string | null
+    description?: string | null
   }
 
   defineProps<Props>()

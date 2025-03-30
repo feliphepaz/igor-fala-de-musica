@@ -30,6 +30,8 @@ type Post = {
     {
       type: 'hero'
       file: string
+      copyright?: string | null
+      description?: string | null
     },
     {
       type: 'thumbnail'
