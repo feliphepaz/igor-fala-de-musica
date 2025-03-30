@@ -7,17 +7,17 @@
         </Text>
 
         <PostPhoto
-          v-if="block.type === 'photo'"
-          :file="block.file as string"
+          v-if="block.type === 'photo' && block.file"
+          :file="block.file"
           :copyright="block.copyright"
           :description="block.description"
         />
 
         <PostQuote
-          v-if="block.type === 'highlight'"
-          :verses="block.verses!"
-          :music="block.music!"
-          :band="block.band!"
+          v-if="block.type === 'highlight' && block.verses"
+          :verses="block.verses"
+          :music="block.music"
+          :band="block.band"
         />
       </template>
     </div>

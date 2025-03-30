@@ -6,7 +6,7 @@ type Block = {
   verses?: string[]
   music?: string
   band?: string
-  file?: File | string
+  file?: string
   copyright?: string
   description?: string
 }

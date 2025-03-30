@@ -13,9 +13,11 @@
       </div>
     </div>
 
-    <div class="post-quote__author">
-      <Text type="text-14" color="black" variant="bold">{{ music }}</Text>
-      <Text type="text-14" color="black">| {{ band }}</Text>
+    <div v-if="music || band" class="post-quote__author">
+      <Text v-if="music" type="text-14" color="black" variant="bold">
+        {{ music }}
+      </Text>
+      <Text v-if="band" type="text-14" color="black">| {{ band }}</Text>
     </div>
   </div>
 </template>
@@ -23,8 +25,8 @@
 <script setup lang="ts">
   interface Props {
     verses: string[]
-    music: string
-    band: string
+    music?: string
+    band?: string
   }
 
   defineProps<Props>()
