@@ -19,14 +19,34 @@
         </Text>
 
         <ul class="error__wrapper__menu__list">
-          <li
-            class="error__wrapper__menu__list__item"
-            v-for="(item, index) in MENU_ITEMS"
-            :key="index"
-          >
-            <NuxtLink :to="item.path">
+          <li class="error__wrapper__menu__list__item">
+            <NuxtLink to="/">
               <Text as="span" type="text-18" variant="bold" color="cherry">
-                {{ item.title }}
+                Início
+              </Text>
+            </NuxtLink>
+          </li>
+
+          <li class="error__wrapper__menu__list__item">
+            <NuxtLink to="/devaneios">
+              <Text as="span" type="text-18" variant="bold" color="cherry">
+                Devaneios
+              </Text>
+            </NuxtLink>
+          </li>
+
+          <li class="error__wrapper__menu__list__item">
+            <NuxtLink to="/listas">
+              <Text as="span" type="text-18" variant="bold" color="cherry">
+                Listas
+              </Text>
+            </NuxtLink>
+          </li>
+
+          <li class="error__wrapper__menu__list__item">
+            <NuxtLink to="/criticas">
+              <Text as="span" type="text-18" variant="bold" color="cherry">
+                Críticas
               </Text>
             </NuxtLink>
           </li>
@@ -39,8 +59,6 @@
 </template>
 
 <script setup lang="ts">
-  import { MENU_ITEMS } from '@/mocks/menu-items'
-
   useHead({
     title: 'Igor Fala de Música',
     meta: [{ property: 'og:title', content: 'Igor Fala de Música' }],

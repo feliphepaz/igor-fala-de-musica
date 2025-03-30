@@ -1,4 +1,4 @@
-type Category = 'devaneio' | 'lista' | 'critica' | 'playlist'
+type Category = 'devaneio' | 'lista' | 'critica'
 
 type Spotify = {
   embed: boolean
