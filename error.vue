@@ -40,6 +40,11 @@
 
 <script setup lang="ts">
   import { MENU_ITEMS } from '@/mocks/menu-items'
+
+  useHead({
+    title: 'Igor Fala de Música',
+    meta: [{ property: 'og:title', content: 'Igor Fala de Música' }],
+  })
 </script>
 
 <style lang="scss" scoped>
