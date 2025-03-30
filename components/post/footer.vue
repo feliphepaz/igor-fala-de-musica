@@ -19,7 +19,7 @@
         />
       </div>
 
-      <div class="post-footer__wrapper__tags">
+      <div v-if="tags.length" class="post-footer__wrapper__tags">
         <Tag v-for="tag in tags" :key="tag.id" :path="tag.title">
           {{ tag.title }}
         </Tag>
@@ -43,7 +43,7 @@
 <script setup lang="ts">
   interface Props {
     spotify: Spotify
-    tags: Tag[]
+    tags?: Tag[]
     authorLoading: boolean
     author: Author
   }

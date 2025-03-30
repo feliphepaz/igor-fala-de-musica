@@ -49,36 +49,25 @@
 
 <script setup lang="ts">
   import usePost from '@/composables/post'
+  import useRelatedPosts from '@/composables/related-posts'
   import useAuthor from '@/composables/author'
   import useTags from '@/composables/tags'
 
   const route = useRoute()
 
-  const {
-    post,
-    isPostLoading,
-    isRelatedPostsLoading,
-    relatedPosts,
-    getPost,
-    getRelatedPosts,
-  } = usePost()
-
+  const { post, isPostLoading, getPost } = usePost()
+  const { relatedPosts, isRelatedPostsLoading, getRelatedPosts } =
+    useRelatedPosts()
   const { author, isAuthorLoading, getAuthor } = useAuthor()
-
   const { tags, getTags } = useTags()
 
   onMounted(async () => {
     await getPost(route.params.post as string)
 
     if (post.value) {
-      await getRelatedPosts(
-        post.value.id,
-        post.value.tags as string[],
-        post.value.category,
-      )
-
+      await getRelatedPosts(post.value.id, post.value.tags, post.value.category)
       await getAuthor(post.value.author)
-      await getTags(post.value.tags as string[])
+      if (post.value.tags) await getTags(post.value.tags)
 
       useHead({
         title: `Igor Fala de Música | ${post.value.title}`,
