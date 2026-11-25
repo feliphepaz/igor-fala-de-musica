@@ -2,8 +2,6 @@
 
 Blog brasileiro dedicado a críticas, listas e devaneios sobre música — especialmente rock, indie e música alternativa.
 
-Site: [igorfalademusica.com](https://igorfalademusica.com)
-
 ## Sobre o projeto
 
 O **Igor Fala de Música** é uma aplicação construída com Nuxt 3 e Vue 3. Os conteúdos são organizados em categorias, exibidos em páginas públicas e consultados a partir do Supabase.
