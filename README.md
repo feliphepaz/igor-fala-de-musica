@@ -1,7 +1,5 @@
 # Igor Fala de Música
 
-![Igor Fala de Música](https://igorfalademusica.com/og-image.jpg)
-
 Blog brasileiro dedicado a críticas, listas e devaneios sobre música — especialmente rock, indie e música alternativa.
 
 Site: [igorfalademusica.com](https://igorfalademusica.com)
